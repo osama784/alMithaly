@@ -1,10 +1,10 @@
 from django.contrib import admin
 
-from .models import Admin, Employee, CustomUser
+from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth.forms import UserChangeForm
+from django import forms
 
-@admin.register(CustomUser)
-class CustomUserAdmin(admin.ModelAdmin):
-    readonly_fields = ['password']
+from .models import Admin, Employee, CustomUser
 
 @admin.register(Admin)
 class AdminAdmin(admin.ModelAdmin):
@@ -14,3 +14,7 @@ class AdminAdmin(admin.ModelAdmin):
 class EmployeeAdmin(admin.ModelAdmin):
     readonly_fields = ['created_at']
 
+
+@admin.register(CustomUser)
+class CustomUserAdmin(admin.ModelAdmin):
+    readonly_fields = ['password']
